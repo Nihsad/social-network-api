@@ -1,7 +1,7 @@
 const User = require('../models/User');
+const Thought = require('../models/Thought'); // Import the Thought model if needed
 
-const UserController = {
-  // Get all users
+const userController = {
   getAllUsers: async (req, res) => {
     try {
       const users = await User.find();
@@ -10,60 +10,40 @@ const UserController = {
       res.status(500).json({ error: 'Server error' });
     }
   },
-
-  // Get user by ID
   getUserById: async (req, res) => {
     try {
-      const user = await User.findById(req.params.id);
-      if (!user) {
-        return res.status(404).json({ error: 'User not found' });
-      }
+      const user = await User.findById(req.params.id).populate('thoughts friends');
       res.json(user);
     } catch (error) {
-      res.status(500).json({ error: 'Server error' });
+      res.status(404).json({ error: 'User not found' });
     }
   },
-
-  // Create new user
   createUser: async (req, res) => {
     try {
-      const newUser = new User(req.body);
-      await newUser.save();
-      res.status(201).json(newUser);
+      const newUser = await User.create(req.body);
+      res.json(newUser);
     } catch (error) {
-      res.status(500).json({ error: 'Server error' });
+      res.status(400).json({ error: 'Invalid data' });
     }
   },
-
-  // Update user by ID
-  updateUser: async (req, res) => {
+  updateUserById: async (req, res) => {
     try {
-      const updatedUser = await User.findByIdAndUpdate(
-        req.params.id,
-        req.body,
-        { new: true }
-      );
-      if (!updatedUser) {
-        return res.status(404).json({ error: 'User not found' });
-      }
+      const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
       res.json(updatedUser);
     } catch (error) {
-      res.status(500).json({ error: 'Server error' });
+      res.status(404).json({ error: 'User not found' });
     }
   },
-
-  // Delete user by ID
-  deleteUser: async (req, res) => {
+  deleteUserById: async (req, res) => {
     try {
       const deletedUser = await User.findByIdAndDelete(req.params.id);
-      if (!deletedUser) {
-        return res.status(404).json({ error: 'User not found' });
-      }
+      // BONUS: Remove user's associated thoughts
+      await Thought.deleteMany({ user: req.params.id });
       res.json({ message: 'User deleted successfully' });
     } catch (error) {
-      res.status(500).json({ error: 'Server error' });
+      res.status(404).json({ error: 'User not found' });
     }
   },
 };
 
-module.exports = UserController;
+module.exports = userController;

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const FriendController = require('../controllers/friendController');
+const FriendController = require('../controllers/friendController.js');
 
 // POST new friendship (add friend)
 router.post('/', FriendController.addFriend);

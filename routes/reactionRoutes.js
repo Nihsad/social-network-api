@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const ReactionController = require('../controllers/reactionController');
+const ReactionController = require('../controllers/reactionController.js');
 
 // POST new reaction
 router.post('/', ReactionController.createReaction);
