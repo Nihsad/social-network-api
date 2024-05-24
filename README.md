@@ -1,4 +1,4 @@
-# Social Network API
+# Challenge 18 - Social Network API
 
 ## Description
 This is an API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list. Built using Express.js, MongoDB, and Mongoose.
@@ -37,6 +37,9 @@ This is an API for a social network web application where users can share their 
 
 ## Contributing
 Contributions are welcome! If you'd like to contribute to this project, please fork the repository and submit a pull request.
+
+## Credit
+Thanks to Sara Hines for help on the set-up, including controllers, models and routes. 
 
 ## Walkthrough Video
 * [Link to Walkthrough Video](https://drive.google.com/file/d/1Gy1BtG41HaLd9ZfnHIm6ns1uKzbr3YMx/view?usp=sharing)
