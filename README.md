@@ -35,6 +35,14 @@ This is an API for a social network web application where users can share their 
 - `/api/thoughts/:thoughtId/reactions/:reactionId`
   - DELETE: Remove a reaction by ID.
 
+## Contributing
+Contributions are welcome! If you'd like to contribute to this project, please fork the repository and submit a pull request.
+
 ## Walkthrough Video
 * [Link to Walkthrough Video](https://drive.google.com/file/d/1Gy1BtG41HaLd9ZfnHIm6ns1uKzbr3YMx/view?usp=sharing)
 * [Video for DELETE reaction](https://drive.google.com/file/d/1D8DEzegKaIMFc4o-J_Iw3DMftSV-lYjV/view?usp=sharing)
+
+## License
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+This project is licensed under the MIT License. See the LICENSE file for details. 
